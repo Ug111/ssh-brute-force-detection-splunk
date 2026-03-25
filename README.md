@@ -37,7 +37,7 @@ This project addresses:
 | Ubuntu | Target system |
 | Splunk Enterprise | SIEM for log analysis |
 
-![SSH](screenshots/01_Lab_Environment_Setup.png)
+![Lab Steup](screenshots/01_Lab_Environment_Setup.png)
 ---
 
 ## ⚔️ Attack Simulation
