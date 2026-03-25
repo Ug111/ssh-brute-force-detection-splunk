@@ -1,4 +1,5 @@
 # 🔐 SSH Brute-Force Detection Lab (Splunk SIEM)
+Simulated and detected an SSH Brute-force attack that resulted in a successful system compromise using splunk SIEM.
 
 ## 👨‍💻 Author
 Ugochukwu Iwuoha  
