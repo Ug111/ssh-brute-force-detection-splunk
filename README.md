@@ -29,14 +29,12 @@ This project addresses:
 
 ---
 
-## 🧪 Lab Tools Used
+## 🛠️ Lab Tools Used
 
-| Component | Role |
-|----------|------|
-| Kali Linux | Attacker machine |
-| Ubuntu | Target system |
-| Splunk Enterprise | SIEM for log analysis |
-| Hydra | Brute-force simulation
+- Kali Linux | Attacker machine |
+- Ubuntu | Target system |
+- Splunk Enterprise | SIEM for log analysis |
+- Hydra | Brute-force simulation
 
 ![Lab Tools](screenshots/01_Lab_Environment_Setup.jpeg)
 ---
@@ -107,7 +105,8 @@ This identifies source IPs generating multiple failed login attempts.
 ---
 
 ### 2️⃣ Threshold-Based Detection
-The following query identifies multiple failed SSH login attempts
+This query identifies repeated failed login attempts,
+from a single source IP, which is a common indicator of brute-force attacks.
 ```spl
 index=linux_logs "Failed password"
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
@@ -225,7 +224,10 @@ This scenario demonstrates:
 
 This project demonstrates a full SOC workflow:
 Attack Simulation → Log Collection → Detection → Correlation → Investigation → Insight
-It highlights how attackers can move from repeated failed attempts to successful compromise, 
-and how proper detection logic can identify this behavior early.
+It highlights how attackers can move from repeated failed attempts to successful full system compromise.
+By leveraging Splunk SIEM  for log ingestion, detection, and correlation, this lab highlights the importance of monitoring,
+authentication patterns and identifying suspicious behavior early.
+This reflects real-world SOC practices used to detect and respond to unauthorized access attempts.
+
 This reflects real-world  security monitoring practices used in modern SOC environments.
 
