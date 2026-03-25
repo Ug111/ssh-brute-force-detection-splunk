@@ -40,6 +40,8 @@ This project addresses:
 
 ![Lab Tools](screenshots/01_Lab_Environment_Setup.jpeg)
 ---
+## 🚦 SSH Service Verification
+Verification lab environment with attacker  (Kali Linux) and target (Ubuntu)
 
 ## ⚔️ Attack Scenario
 
