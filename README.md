@@ -50,6 +50,9 @@ Verification lab environment with attacker  (Kali Linux) and target (Ubuntu)
 ## ⚔️ Hydra Attack Execution
 Simulating an SSH brute-force attack using Hydra from the attacker machine (Kali Linux)
 
+![Hydra Initializing](screenshots/03_Hydra_Attack_Execution.png)
+
+---
 
 ## ⚔️ Attack Progress
 
@@ -113,6 +116,11 @@ index=linux_logs "Failed password"
 ```
 
 ![Detection Output](screenshots/08_detection_output.png)
+
+## Successful SSH Lgin Detected 
+Detection of brute-force attack by aggregating failed login attempts per source IP
+
+
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
