@@ -87,7 +87,7 @@ index=linux_logs "Failed password"
 | sort -count
 ```
 
-![Raw logs](screenshots/07_Raw_Logs_in_Splunk)
+![Raw logs](screenshots/07_Raw_logs_in_Splunk.png)
 
 This identifies source IPs generating multiple failed login attempts.
 
