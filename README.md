@@ -37,20 +37,24 @@ This project addresses:
 | Ubuntu | Target system |
 | Splunk Enterprise | SIEM for log analysis |
 
+![SSH](screenshots/01_Lab_Environment_Setup.png)
 ---
 
 ## ⚔️ Attack Simulation
 
-Abrute-force attack was simulated using Hydra **Kali VM** against a targeted
+A brute-force attack was simulated using Hydra **Kali VM** against a targeted
 lab authorized environment **(Ubuntu VM)** to demonstrate password attack techniques.
 
 ```bash
 hydra -l <username> -P small.txt ssh://<target-ip> -t 2
+
+![SSH](screenshots/03_Hydra_Attack_Execution)
 ```
 
 - Multiple login attempts were generated
 - Authentication logs were recorded in `/var/log/auth.log`
 
+![SSH](screenshoots/05_Log_Evidence_on_Ubuntu.png)
 ---
 
 ## 📥 Log Ingestion
@@ -76,25 +80,30 @@ index=linux_logs "Failed password"
 | sort -count
 ```
 
+![SSH](screenshots/07_Raw_logs_in_Splunk)
+
 This identifies source IPs generating multiple failed login attempts.
 
 ---
 
 ### 2️⃣ Threshold-Based Detection
-
+The following query identifies multiple failed SSH login attempts
 ```spl
 index=linux_logs "Failed password"
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
-| stats count by src_ip
-| where count > 5
+| stats count as failed_attempts by src_ip
+| where failed_attempts > 5
 ```
+![SSH](screenshots/08_Detection_Query_Output.png)
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
 ---
 
 ### 3️⃣ Correlation of Failed and Successful Logins
-
+This screenshot shows the coreelation between multiple failedSSH login
+attempts follwoed by a successful login, indicating a possible brute-force
+attack
 ```spl
 index=linux_logs ("Failed password" OR "Accepted password")
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
@@ -103,6 +112,7 @@ index=linux_logs ("Failed password" OR "Accepted password")
 by src_ip
 ```
 
+![Failed vs Success](screenshots/11_correlation_of_Failed_and_Successful_SSH_Attempts.png
 ---
 
 ## 📊 Key Findings
