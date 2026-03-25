@@ -37,7 +37,7 @@ This project addresses:
 | Ubuntu | Target system |
 | Splunk Enterprise | SIEM for log analysis |
 
-![Lab Steup](Screenshots/01_Lab_Environment_Setup.png)
+![Lab setup](screenshots/01_Lab_Environment_Setup.png)
 ---
 
 ## ⚔️ Attack Simulation
@@ -54,7 +54,7 @@ hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 - Multiple login attempts were generated
 - Authentication logs were recorded in `/var/log/auth.log`
 
-![Attack Simulation](Screenshots/05_Log_Evidence_on_Ubuntu.png)
+![Attack simulation](screenshots/05_Log_Evidence_on_Ubuntu.png)
 ---
 
 ## 📥 Log Ingestion
@@ -80,7 +80,7 @@ index=linux_logs "Failed password"
 | sort -count
 ```
 
-![SSH](Screenshots/07_Raw_logs_in_Splunk)
+![SSH](screenshots/07_Raw_logs_in_Splunk)
 
 This identifies source IPs generating multiple failed login attempts.
 
