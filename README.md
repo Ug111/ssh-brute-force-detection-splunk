@@ -56,8 +56,8 @@ hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 - Logs show reppeated "Failed password" attempts from a single IP.
 - Authentication logs were recorded in `/var/log/auth.log`
 
-![Log Evidence](screenshots/05_Log_Evidence_on_Ubuntu.png)
 ---
+![Log Evidence](screenshots/05_Log-Evidence-on-Ubuntu.png)
 
 ## 📥 Log Ingestion
 
