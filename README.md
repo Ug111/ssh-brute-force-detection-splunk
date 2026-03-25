@@ -40,17 +40,19 @@ This project addresses:
 ![Lab setup](screenshots/01_Lab_Environment_Setup.png)
 ---
 
-## ⚔️ Attack Simulation
+## ⚔️ Attack Scenario
 
-A brute-force attack was simulated using Hydra **Kali VM** against a targeted
-lab authorized environment **(Ubuntu VM)** to demonstrate password attack techniques.
+A brute-force attack was simulated using multiple failed login attempts
 
 ```bash
 hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 
+![Attack Scenario](screenshots/04_Hydra_Attack_Progress.png)
 ```
 
-- Multiple login attempts were generated
+## 🏮Log Evidence
+
+- Logs show reppeated "Failed password" attempts from a single IP.
 - Authentication logs were recorded in `/var/log/auth.log`
 
 ![Log Evidence](screenshots/05_Log_Evidence_on_Ubuntu.png)
@@ -60,6 +62,7 @@ hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 
 Logs were ingested into Splunk by monitoring:
 
+![Log Ingestion](screenshots/06_splunk_data_input_configuration.png)
 ```
 /var/log/auth.log
 ```
@@ -68,8 +71,12 @@ This enabled real-time analysis of authentication events.
 
 ---
 
-## 🔍 Detection Logic
+### 🔍 Detection Logic
 
+This output shows a source IP with:
+- multiple failed login attempts
+- At least one successful login
+  
 ### 1️⃣ Failed Login Detection
 
 ```spl
@@ -141,6 +148,9 @@ A time-based analysis was performed to observe spikes in login attempts:
 ```spl
 index=linux_logs "Failed password"
 | timechart count
+
+![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
+
 ```
 
 This highlights attack intensity over time.
@@ -185,6 +195,13 @@ multiple credential combinations without backing down.
 
 ---
 
+## Analyst Notes
+
+- The activity indicates a brute-force attack
+- The successful login suggests compromise
+- Recommend action:
+   - Block source IP
+   - Investigate affected account
 ## 🔗 Conclusion
 
 This project illustrates a full workflow,including attack simulation,
