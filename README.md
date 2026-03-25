@@ -29,15 +29,16 @@ This project addresses:
 
 ---
 
-## 🧪 Lab Setup
+## 🧪 Lab Tools Used
 
 | Component | Role |
 |----------|------|
 | Kali Linux | Attacker machine |
 | Ubuntu | Target system |
 | Splunk Enterprise | SIEM for log analysis |
+| Hydra | Brute-force simulation
 
-![Lab setup](screenshots/01_Lab_Environment_Setup.png)
+![Lab Tools](screenshots/01_Lab_Environment_Setup.png)
 ---
 
 ## ⚔️ Attack Scenario
@@ -101,7 +102,7 @@ index=linux_logs "Failed password"
 | where failed_attempts > 5
 ```
 
-![Screenshot](Screenshots/08_Detection_Query_Output.png)
+![Detection Output](screenshots/08-detection-output.png)
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
@@ -162,10 +163,11 @@ multiple credential combinations without backing down.
 ## 🧠 Skills Demonstrated
 
 - SIEM log ingestion (Splunk)
+- Attack simulation and analysis
 - Log analysis and parsing
-- Regex field extraction
+- Regex-based field extraction
 - Detection engineering
-- Threat correlation
+- Security event correlation
 - Incident investigation
 
 ---
@@ -204,9 +206,9 @@ multiple credential combinations without backing down.
    - Investigate affected account
 ## 🔗 Conclusion
 
-This project illustrates a full workflow,including attack simulation,
-detection, and investigation, conducted in a controlled environment.
+This project demonstrates a full SOC workflow:
+Attack Simulation → Log Collection → Detection → Correlation → Investigation → Insight
+It highlights how attackers can move from repeated failed attempts to successful compromise, 
+and how proper detection logic can identify this behavior early.
+This reflects real-world  security monitoring practices used in modern SOC environments.
 
-**Attack → Log Generation → Detection → Investigation → Insight**
-
-It reflects real-world SOC analysis techniques used to detect and respond to brute-force attacks.
