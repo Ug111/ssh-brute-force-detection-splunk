@@ -117,12 +117,13 @@ index=linux_logs "Failed password"
 
 ![Detection Output](screenshots/08_detection_output.png)
 
-## Successful SSH Lgin Detected 
+Flags IPs exceeding a defined threshold of failed attempts.
+---
+
+## Successful SSH Login Detected 
 Detection of brute-force attack by aggregating failed login attempts per source IP
 
-
-
-Flags IPs exceeding a defined threshold of failed attempts.
+![Successful login Detected](screenshots/09_Successful _SSH_login_Detected_after_multiple_Failed_Attempts.png)
 
 ---
 
