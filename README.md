@@ -127,8 +127,24 @@ Detection of brute-force attack by aggregating failed login attempts per source 
 
 ---
 
+## 📈 Visualization
+
+A time-based analysis was performed to observe spikes in login attempts:
+```spl
+index=linux_logs "Failed password"
+| timechart count
+```
+This highlights attack intensity over time.
+The unrelenting nature of brute-force attacks
+demonstrates how attackers persistently attempt
+multiple credential combinations without backing down.
+
+![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
+
+---
+
 ### 3️⃣ Correlation of Failed and Successful Logins
-This screenshot shows the coreelation between multiple failedSSH login
+This screenshot shows the correlation between multiple failedSSH login
 attempts follwoed by a successful login, indicating a possible brute-force
 attack
 ```spl
@@ -141,7 +157,6 @@ count(eval(searchmatch("Accepted password"))) as successful_logins by src_ip
 ![Failed vs Successful](screenshots/11_Correlation_of_Failed_and_Successful_SSH_Attempts.png)
 
 ---
-
 
 ## 📊 Key Findings
 
@@ -161,21 +176,6 @@ This scenario demonstrates:
 - Correlation of events is critical for detection
 
 ---
-
-## 📈 Visualization
-
-A time-based analysis was performed to observe spikes in login attempts:
-```spl
-index=linux_logs "Failed password"
-| timechart count
-```
-This highlights attack intensity over time.
-The unrelenting nature of brute-force attacks
-demonstrates how attackers persistently attempt
-multiple credential combinations without backing down.
-
----
-![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
 
 ## 🧠 Skills Demonstrated
 
