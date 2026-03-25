@@ -30,9 +30,9 @@ This project addresses:
 
 ## 🛠️ Lab Tools Used
 
-- Kali Linux | Attacker machine |
-- Ubuntu | Target system |
-- Splunk Enterprise | SIEM for log analysis |
+- Kali Linux | Attacker machine 
+- Ubuntu | Target system 
+- Splunk Enterprise | SIEM for log analysis 
 - Hydra | Brute-force simulation
 
 ![Lab Tools](screenshots/01_Lab_Environment_Setup.jpeg)
