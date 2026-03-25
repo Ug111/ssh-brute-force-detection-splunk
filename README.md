@@ -54,7 +54,7 @@ hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 - Multiple login attempts were generated
 - Authentication logs were recorded in `/var/log/auth.log`
 
-![SSH](screenshoots/05_Log_Evidence_on_Ubuntu.png)
+![Attack Simulation](screenshots/05_Log_Evidence_on_Ubuntu.png)
 ---
 
 ## 📥 Log Ingestion
@@ -94,7 +94,7 @@ index=linux_logs "Failed password"
 | stats count as failed_attempts by src_ip
 | where failed_attempts > 5
 ```
-![Threshold-Based Detection](screenshots/08_Detection_Query_Output.png)
+![Screenshot](screenshots/08_Detection_Query_Output.png)
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
