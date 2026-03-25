@@ -102,7 +102,7 @@ index=linux_logs "Failed password"
 | where failed_attempts > 5
 ```
 
-![Detection Output](screenshots/08_Detection_Query_Threshold.png)
+![Detection Output]()
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
