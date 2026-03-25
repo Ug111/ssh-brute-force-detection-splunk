@@ -153,8 +153,7 @@ index=linux_logs "Failed password"
 
 ![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
 
-```
-
+``
 This highlights attack intensity over time.
 The unrelenting nature of brute-force attacks
 demonstrates how attackers persistently attempt
