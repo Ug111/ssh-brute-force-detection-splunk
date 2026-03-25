@@ -48,7 +48,6 @@ lab authorized environment **(Ubuntu VM)** to demonstrate password attack techni
 ```bash
 hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 
-![SSH](screenshots/03_Hydra_Attack_Execution)
 ```
 
 - Multiple login attempts were generated
