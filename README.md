@@ -48,8 +48,8 @@ A brute-force attack was simulated using multiple failed login attempts
 ```bash
 hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 
-![Attack Scenario](screenshots/04_Hydra_Attack_Progress.png)
 ```
+![Attack Scenario](screenshots/04-Hydra-Attack-Progress.png)
 
 ## 🏮Log Evidence
 
