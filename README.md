@@ -43,7 +43,15 @@ This project addresses:
 ## 🚦 SSH Service Verification
 Verification lab environment with attacker  (Kali Linux) and target (Ubuntu)
 
-## ⚔️ Attack Scenario
+![SSH](screenshots/02_SSH_service_verification_running.png)
+
+---
+
+## ⚔️ Hydra Attack Execution
+Simulating an SSH brute-force attack using Hydra from the attacker machine (Kali Linux)
+
+
+## ⚔️ Attack Progress
 
 A brute-force attack was simulated using multiple failed login attempts
 
