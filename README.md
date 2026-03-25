@@ -146,19 +146,17 @@ This scenario demonstrates:
 ## 📈 Visualization
 
 A time-based analysis was performed to observe spikes in login attempts:
-
 ```spl
 index=linux_logs "Failed password"
 | timechart count
-
-![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
-
-``
+```
 This highlights attack intensity over time.
 The unrelenting nature of brute-force attacks
 demonstrates how attackers persistently attempt
 multiple credential combinations without backing down.
+
 ---
+![Attack Timeline](screenshots/10_Attack_Timeline_Visualization.png)
 
 ## 🧠 Skills Demonstrated
 
