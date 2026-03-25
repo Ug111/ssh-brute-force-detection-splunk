@@ -123,7 +123,7 @@ Flags IPs exceeding a defined threshold of failed attempts.
 ## Successful SSH Login Detected 
 Detection of brute-force attack by aggregating failed login attempts per source IP
 
-![Successful login Detected](screenshots/09_Successful _SSH_login_Detected.png)
+![Successful login Detected](screenshots/09_Successful_SSH_login_Detected.png)
 
 ---
 
