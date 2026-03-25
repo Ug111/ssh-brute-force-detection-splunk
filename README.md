@@ -54,7 +54,7 @@ hydra -l <username> -P small.txt ssh://<target-ip> -t 2
 - Multiple login attempts were generated
 - Authentication logs were recorded in `/var/log/auth.log`
 
-![Attack simulation](screenshots/05_Log_Evidence_on_Ubuntu.png)
+![Log Evidence](screenshots/05_Log_Evidence_on_Ubuntu.png)
 ---
 
 ## 📥 Log Ingestion
