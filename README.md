@@ -94,7 +94,7 @@ index=linux_logs "Failed password"
 | stats count as failed_attempts by src_ip
 | where failed_attempts > 5
 ```
-![SSH](screenshots/08_Detection_Query_Output.png)
+![Threshold-Based Detection](screenshots/08_Detection_Query_Output.png)
 
 Flags IPs exceeding a defined threshold of failed attempts.
 
