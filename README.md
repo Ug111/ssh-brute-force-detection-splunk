@@ -172,7 +172,7 @@ multiple credential combinations without backing down.
 
 ## 📸 Screenshots
 
-![Screenshots](screenshots/01_Lab_Environment_Setup.png)  
+1  Lab Environment Setup  
 2. SSH Service Verification  
 3. Hydra Attack Execution  
 4. Attack Progress  
