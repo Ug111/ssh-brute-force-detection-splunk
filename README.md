@@ -116,13 +116,13 @@ attack
 index=linux_logs ("Failed password" OR "Accepted password")
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
 | stats count(eval(searchmatch("Failed password"))) as failed_attempts,
-        count(eval(searchmatch("Accepted password"))) as successful_logins
-by src_ip
+count(eval(searchmatch("Accepted password"))) as successful_logins by src_ip
 ```
 
 ![Failed vs Successful](screenshots/11_Correlation_of_Failed and Successful_SSH_Attempts.png)
 
 ---
+
 
 ## 📊 Key Findings
 
