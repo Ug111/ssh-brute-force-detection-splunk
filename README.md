@@ -120,7 +120,7 @@ index=linux_logs ("Failed password" OR "Accepted password")
 by src_ip
 ```
 
-![Failed vs Success](screenshots/11_correlation_of_Failed_and_Successful_SSH_Attempts.png)
+![Failed vs Successful](screenshots/11_Correlation_of_Failed and Successful_SSH_Attempts.png)
 
 ---
 
