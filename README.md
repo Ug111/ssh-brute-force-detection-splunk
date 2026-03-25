@@ -1,69 +1,185 @@
-# Splunk SOC Lab: SSH Brute-Force Detection & Alerting
+# 🔐 SSH Brute-Force Detection Lab (Splunk SIEM)
 
-## Objective
-This lab simulates SSH brute-force attacks and demonstrates how 
-splunk can detect, analyze, and alert on suspicious authentication activity.
+## 👨‍💻 Author
+Ugochukwu Iwuoha  
 
+---
 
-## Lab Setup
-- Ubuntu (Splunk Server)
-- Kali (Attacker)
-- Splunk Enterprise installed
-- Log Source: /var/log/auth.log
+## 📌 Project Overview
 
-## Data Ingestion
-Explain HOW logs entered Splunk
-- Monitoring /var/log/auth.log
-- Sourcetype used (linux_secure)
-- index used (main)
-![Splunk Add Data Screenshot](screenshot/add_data_monitor.png)
+This project simulates and detects an SSH brute-force attack in a controlled lab environment **Kali linux & Ubuntu VM** using **Splunk SIEM**.
 
-## Identify Failed SSH Login Attempts
-''' index=main "Failed password"
+The objective of this lab is to demonstrate how security analysts can:
+- Detect brute-force login attempts
+- Identify attacker source IP
+- Correlate failed and successful login events
+- Investigate potential system compromise
 
-This query searches the ingested authentication logs for all events 
-containing the phrase "Failed password", which indicates unsuccessful SSH login attempts
+---
 
-## Observation
-The result show multiple failed login attempts across different usernames,source IP adressess,
-and timestamps
+## 🚨 Problem Statement
 
-## Conclusion
-This pattern suggests potential brute-force activity, where an attacker is attempting to gain 
-unathorized access by trying multiple credentials.
+Brute-force attacks on SSH services are a common entry point for attackers to gain access to systems.  
+Without proper monitoring and detection, repeated failed login attempts may go unnoticed until a successful compromise occurs.
 
-## Identify Top Attacking IP Addresses
-''' index=main "Failed password" | stats count by src | sort -count
-## Explanation:
-- stats count by src aggregates the number of failed login attempts per source IP address
-- sort -count orders the results from highest to lowest, highlighting the most active attacker
+This project addresses:
+- Detection of repeated failed login attempts
+- Identification of suspicious login behavior
+- Detection of successful compromise following repeated brute-force attempts
 
-## Observation:
-In this lab, the IP address 127.0.0.1 generated the highest number of failed login attempts (6 attempts)
+---
 
-## Conclusion:
-The high frequency of failed attempts from a single IP indicates a concentrated brute-force attack, likely automated
-Search in Splunk to confirm events are indexed:
-![Ingestion Screenshot](screenshots/search_results.png)
+## 🧪 Lab Setup
 
-## Step 3: Simulate Failed Logins
-Generated failed SSH logins to test alerting:
-![Failed Login Event](screenshots/failed_password.png)
+| Component | Role |
+|----------|------|
+| Kali Linux | Attacker machine |
+| Ubuntu | Target system |
+| Splunk Enterprise | SIEM for log analysis |
 
-## Step 4: Detect Brute-Force Attempts
-Query to extract attacker IPs and count failed logins:
-![Brute-Force Detection](brute_force_table.png)
+---
 
-## Step 5: Build SOC Dashboard
-Visualize failed login trends and top attacker IPS:
-![Dashboard Screenshot](screenshots/dashboard.png)
+## ⚔️ Attack Simulation
 
-## Summary
+Abrute-force attack was simulated using Hydra **Kali VM** against a targeted
+lab authorized environment **(Ubuntu VM)** to demonstrate password attack techniques.
 
-This lab demonstrates:
-- Hands-on Splunk log injection
-- Failed login detection and brute-force identification
-- Field extraction and search processing language
-- Dashboard creation for SOC visibility
+```bash
+hydra -l <username> -P small.txt ssh://<target-ip> -t 2
+```
 
-Skills demonstrated: Linux, Splunk, SOC fundamentals, threat detection 
+- Multiple login attempts were generated
+- Authentication logs were recorded in `/var/log/auth.log`
+
+---
+
+## 📥 Log Ingestion
+
+Logs were ingested into Splunk by monitoring:
+
+```
+/var/log/auth.log
+```
+
+This enabled real-time analysis of authentication events.
+
+---
+
+## 🔍 Detection Logic
+
+### 1️⃣ Failed Login Detection
+
+```spl
+index=linux_logs "Failed password"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+| sort -count
+```
+
+This identifies source IPs generating multiple failed login attempts.
+
+---
+
+### 2️⃣ Threshold-Based Detection
+
+```spl
+index=linux_logs "Failed password"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+| where count > 5
+```
+
+Flags IPs exceeding a defined threshold of failed attempts.
+
+---
+
+### 3️⃣ Correlation of Failed and Successful Logins
+
+```spl
+index=linux_logs ("Failed password" OR "Accepted password")
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count(eval(searchmatch("Failed password"))) as failed_attempts,
+        count(eval(searchmatch("Accepted password"))) as successful_logins
+by src_ip
+```
+
+---
+
+## 📊 Key Findings
+
+- A single source IP generated **1679 failed login attempts**
+- The same IP later achieved **successful authentication**
+- This indicates a **successful brute-force compromise**
+
+---
+
+## ⚠️ Security Insight
+
+This scenario demonstrates:
+
+- Attackers can persist through repeated login attempts
+- Weak credentials increase risk of compromise
+- Monitoring failed logins alone is not sufficient
+- Correlation of events is critical for detection
+
+---
+
+## 📈 Visualization
+
+A time-based analysis was performed to observe spikes in login attempts:
+
+```spl
+index=linux_logs "Failed password"
+| timechart count
+```
+
+This highlights attack intensity over time.
+The unrelenting nature of brute-force attacks
+demonstrates how attackers persistently attempt
+multiple credential combinations without backing down.
+---
+
+## 🧠 Skills Demonstrated
+
+- SIEM log ingestion (Splunk)
+- Log analysis and parsing
+- Regex field extraction
+- Detection engineering
+- Threat correlation
+- Incident investigation
+
+---
+
+## 🚀 Future Improvements
+
+- Implement alerting in Splunk for brute-force detection
+- Integrate machine learning for anomaly detection
+- Improve threshold tuning to reduce false positives
+- Expand to network-level monitoring
+
+---
+
+## 📸 Screenshots
+
+1. Lab Environment Setup  
+2. SSH Service Verification  
+3. Hydra Attack Execution  
+4. Attack Progress  
+5. Log Evidence on Ubuntu  
+6. Splunk Data Input Configuration  
+7. Raw Logs in Splunk  
+8. Detection Query Output  
+9. Successful Login Detection  
+10. Attack Timeline Visualization  
+11. Correlation of Failed and Successful Attempts  
+
+---
+
+## 🔗 Conclusion
+
+This project illustrates a full workflow,including attack simulation,
+detection, and investigation, conducted in a controlled environment.
+
+**Attack → Log Generation → Detection → Investigation → Insight**
+
+It reflects real-world SOC analysis techniques used to detect and respond to brute-force attacks.
