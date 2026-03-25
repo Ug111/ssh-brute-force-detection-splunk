@@ -119,7 +119,7 @@ index=linux_logs ("Failed password" OR "Accepted password")
 count(eval(searchmatch("Accepted password"))) as successful_logins by src_ip
 ```
 
-![Failed vs Successful](screenshots/11_Correlation_of_Failed and Successful_SSH_Attempts.png)
+![Failed vs Successful](screenshots/11_Correlation_of_Failed_and_Successful_SSH_Attempts.png)
 
 ---
 
