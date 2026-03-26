@@ -223,7 +223,7 @@ This scenario demonstrates:
 ## 🔗 Conclusion
 
 This project demonstrates a full SOC workflow:
-Attack Simulation → Log Collection → Detection → Correlation → Investigation → Insight
+Attack Simulation → Log Collection → Detection → Correlation → Investigation → Insight. 
 It highlights how attackers can move from repeated failed attempts to successful full system compromise.
 By leveraging Splunk SIEM  for log ingestion, detection, and correlation, this lab highlights the importance of monitoring,
 authentication patterns and identifying suspicious behavior early.
