@@ -99,7 +99,7 @@ index=linux_logs "Failed password"
 
 ![Raw logs](screenshots/07_splunk_showing_raw_logs.png)
 
-This identifies source IPs generating multiple failed login attempts.
+This identifies source IP generating multiple failed login attempts.
 
 ---
 
