@@ -143,8 +143,8 @@ multiple credential combinations without backing down.
 ---
 
 ### 3️⃣ Correlation of Failed and Successful Logins
-This screenshot shows the correlation between multiple failedSSH login
-attempts follwoed by a successful login, indicating a possible brute-force
+This screenshot shows the correlation between multiple failed SSH login
+attempts followed by a successful login, indicating a possible brute-force
 attack
 ```spl
 index=linux_logs ("Failed password" OR "Accepted password")
