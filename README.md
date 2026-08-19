@@ -1,6 +1,52 @@
-![Splunk Version](https://shields.io)
-![SIEM Category](https://shields.io)
-![License](https://shields.io)
+<div align="center">
+
+# 🗄️ SSH Brute-Force Detection Lab - Splunk SIEM
+
+  <p align="center">
+    Advanced security telemetry analysis demonstrating stateful correlation of authentication anomalies and active system compromises.
+  </p>
+
+[![Splunk Version](https://shields.io)](https://www.splunk.com/)
+[![OS Telemetry](https://shields.io🐧?style=for-the-badge&color=24292e)]()
+[![SIEM Layer](https://shields.io)](https://github.com/Ug111/ssh-brute-force-detection-splunk)
+[![MITRE ATT&CK](https://shields.io)](https://mitre.org)
+
+---
+</div>
+
+## 📊 Correlation Architecture
+
+Unlike basic threshold alerts that simply count failed logins, this lab implements stateful detection to track the critical operational transition from attack to active compromise:
+
+```mermaid
+graph TD
+    subgraph Target Host (Linux Syslog)
+        Logs["📂 /var/log/auth.log<br>(Failed & Successful Events)"]
+    end
+
+    subgraph Splunk Heavy Ingestion Layer
+        UF["Forwarder / Ingest Stream"]
+        Parser["🔍 Regex Field Extraction<br>(src_ip, user, status)"]
+    end
+
+    subgraph Advanced SPL Analytics Engine
+        Threshold{"⏰ Window Check<br>Failed Attempts > X?"}
+        StateTrack{"⚠️ State Correlation<br>Followed by Successful Login?"}
+        
+        Alert1["🔔 Low Priority Alert:<br>Noisy Brute-Force No Success"]
+        Alert2["🚨 CRITICAL Incident:<br>System Compromised! (Breach)"]
+    end
+
+    Logs --> UF
+    UF --> Parser
+    Parser --> Threshold
+    Threshold -- Yes (No Success) --> Alert1
+    Threshold -- Yes --> StateTrack
+    StateTrack -- Match Found from Same IP --> Alert2
+```
+
+## 📝 Overview
+
 
 
 # 🔐 SSH Brute-Force Detection Lab (Splunk SIEM)
