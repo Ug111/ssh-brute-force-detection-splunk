@@ -6,9 +6,9 @@
     Advanced security telemetry analysis demonstrating stateful correlation of authentication anomalies and active system compromises.
   </p>
 
-[![Splunk Version](https://shields.io)](https://www.splunk.com/)
+[![Splunk Version](https://shields.io)](https://splunk.com)
 [![OS Telemetry](https://shields.io🐧?style=for-the-badge&color=24292e)]()
-[![SIEM Layer](https://shields.io)](https://github.com/Ug111/ssh-brute-force-detection-splunk)
+[![SIEM Layer](https://shields.io)](https://github.com)
 [![MITRE ATT&CK](https://shields.io)](https://mitre.org)
 
 ---
@@ -20,16 +20,16 @@ Unlike basic threshold alerts that simply count failed logins, this lab implemen
 
 ```mermaid
 graph TD
-    subgraph Target Host (Linux Syslog)
+    subgraph Target_Host ["Target Host: Linux Syslog"]
         Logs["📂 /var/log/auth.log<br>(Failed & Successful Events)"]
     end
 
-    subgraph Splunk Heavy Ingestion Layer
+    subgraph Splunk_Ingestion ["Splunk Ingestion Layer"]
         UF["Forwarder / Ingest Stream"]
         Parser["🔍 Regex Field Extraction<br>(src_ip, user, status)"]
     end
 
-    subgraph Advanced SPL Analytics Engine
+    subgraph Analytics_Engine ["Advanced SPL Analytics Engine"]
         Threshold{"⏰ Window Check<br>Failed Attempts > X?"}
         StateTrack{"⚠️ State Correlation<br>Followed by Successful Login?"}
         
