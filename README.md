@@ -280,7 +280,7 @@ By leveraging Splunk SIEM  for log ingestion, detection, and correlation, this l
 authentication patterns and identifying suspicious behavior early.
 This reflects real-world SOC practices used to detect and respond to unauthorized access attempts.
 
-Incident Response
+## Incident Response
 The detected SSH brute-force compromise is processed through the incident Response Playbook,
 which defines the subsequent triage, investigation, escalation, incident documentation, closure,
 and lessons learned workflow.
