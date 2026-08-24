@@ -271,7 +271,7 @@ This scenario demonstrates:
 - Recommend action:
    - Block source IP
    - Investigate affected account
-## 🔗 Conclusion
+## 🎉 Conclusion
 
 This project demonstrates a full SOC workflow:
 Attack Simulation → Log Collection → Detection → Correlation → Investigation → Insight. 
