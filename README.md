@@ -284,5 +284,6 @@ This reflects real-world SOC practices used to detect and respond to unauthorize
 The detected SSH brute-force compromise is processed through the incident Response Playbook,
 which defines the subsequent triage, investigation, escalation, incident documentation, closure,
 and lessons learned workflow.
+[IDS-Threat-Detection-Lab](https://github.com/Ug111/Incident-Response-Playbook)
 This reflects real-world  security monitoring practices used in modern SOC environments.
 
